@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Gerador de certificados da IXJCT</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <style>
+        body {
+            background-image:url('fundo-gerador.jpg');
+            background-repeat:repeat-x;
+            font-family:sans-serif;
+            color: #003;
+        }
+    </style>
+    <body>
+    <!--
+        <div class="logo">
+            <img src="logo-jornada-menor.png">
+        </div>
+    -->
+        <div class="topo">
+            <h1>Gerador de Certificados</h1>
+        </div>
+        <div class="formulario-container">
+            <form name="formulario-de-aluno" method="post" action="certificado-pdf.php">
+                <p align="center"><i>Preencha os seus dados e clique em "Gerar Certificado". Confira as informações e salve o certificado em seu computador.</i></p>
+                <p>Email: <input type="email" name="email" value="" placeholder="nome@provedor.com"></p>
+                <p>Senha: <input type="password" name="password~" value=""></p>
+                <!-- <p>Matrícula: <input type="text" name="matricula" value="" placeholder="000.000.0000"></p> -->
+                <input type="submit" value="Gerar Certificado">
+            </form>
+        </div>
+    </body>
+</html>
