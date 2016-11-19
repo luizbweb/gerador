@@ -15,10 +15,11 @@
     </head>
     <style>
         body {
-            background-image:url('fundo-gerador.jpg');
-            background-repeat:repeat-x;
+            background-image:url('img/logo-semana-cg.jpg');
+            background-repeat:no-repeat;
+            background-position: 0px 168px;
             font-family:sans-serif;
-            color: #003;
+            color: #043502;
         }
     </style>
     <body>
@@ -28,15 +29,17 @@
         </div>
     -->
         <div class="topo">
-            <h1>Gerador de Certificados</h1>
+            <h1>GERADOR DE CERTIFICADOS</h1>
         </div>
         <div class="formulario-container">
             <form name="formulario-de-aluno" method="post" action="certificado-pdf.php">
-                <p align="center"><i>Preencha os seus dados e clique em "Gerar Certificado". Confira as informações e salve o certificado em seu computador.</i></p>
+            <div class="box">
+                <p align=""><i>Preencha os seus dados e clique em "Gerar Certificado".<br /> Confira as informações e salve o certificado em seu computador.</i></p>
                 <p>Email: <input type="email" name="email" value="" placeholder="nome@provedor.com"></p>
                 <p>Senha: <input type="password" name="password~" value=""></p>
                 <!-- <p>Matrícula: <input type="text" name="matricula" value="" placeholder="000.000.0000"></p> -->
                 <input type="submit" value="Gerar Certificado">
+            </div>
             </form>
         </div>
     </body>
