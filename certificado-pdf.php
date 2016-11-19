@@ -47,14 +47,11 @@ $geraPDF = new mPDF('utf-8', 'A4-L');
 $geraPDF->SetDisplayMode('fullpage');
 $css = file_get_contents("style.css");
 $geraPDF->WriteHTML($css,1);
-$geraPDFf->WriteHTML($html);
+$geraPDF->WriteHTML($html);
 if ($aluno == 'aluno') {
     echo '<h2 align=center><br><br>Seu email não esta cadastrado. <br>Entre em contato conosco atraves do email:<br> lemauezo@gmail.com</h2>';
 } else {
     $geraPDF->Output();
 }
-
 exit;
-
 ?>
-	
