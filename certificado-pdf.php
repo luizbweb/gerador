@@ -37,7 +37,8 @@ while ($dados = mysqli_fetch_array($query)) {
 
 mysqli_close($conecta);
 
-$hash = hash(sha256, 'mail@mail.com', false);
+$now = date();
+$hash = hash(sha256, 'mail@mail.com'. $now, false);
 
 $html = "<div class='certificado'>
     <div class='texto'>
@@ -47,6 +48,7 @@ $html = "<div class='certificado'>
         </div>
     </div>
 </div>";
+
 /* Gerando o PDF */
 $geraPDF = new mPDF('utf-8', 'A4-L', s, 'Aegyptus');
 $geraPDF->SetDisplayMode('fullpage');
@@ -56,8 +58,7 @@ $geraPDF->WriteHTML($html);
 if ($aluno == 'aluno') {
     echo '<h2 align=center><br><br>Seu email não esta cadastrado. <br>Entre em contato conosco atraves do endere&ccedil;o:<br> certificados@waw.net.br</h2>';
 } else {
-	$geraPDF->Output();
-    // $geraPDF->Output( $hash.'.pdf', f);
+    $geraPDF->Output( $hash.'.pdf', f);
 
 	echo $hash;
 
