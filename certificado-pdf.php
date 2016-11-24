@@ -17,6 +17,8 @@ include('criadorPDF/mpdf.php');
 /* ConexÃ£o com o Banco de Dado */
 include('conection.php');
 
+$conecta = new mysqli(HOST, USER, PASS, DB) or print(mysql_error());
+
 $aluno = 'aluno';
 $email = $_POST['email'];
 $matricula = $_POST['matricula'];
@@ -49,7 +51,7 @@ $css = file_get_contents("style.css");
 $geraPDF->WriteHTML($css,1);
 $geraPDF->WriteHTML($html);
 if ($aluno == 'aluno') {
-    echo '<h2 align=center><br><br>Seu email não esta cadastrado. <br>Entre em contato conosco atraves do email:<br> lemauezo@gmail.com</h2>';
+    echo '<h2 align=center><br><br>Seu email não esta cadastrado. <br>Entre em contato conosco atraves do endere&ccdil;o:<br> certificados@waw.net.br</h2>';
 } else {
     $geraPDF->Output( $hash.'.pdf', f);
 }
@@ -58,17 +60,20 @@ echo $hash;
 /* Enviando o certificao por email */
 
 $assunto = "Certificado da Semana de Campo Grande";
-$texto = "Obrigado por participar da Semana de Campo Grande". $aluno ." ! <br><br> Clique no link abaixo para fazer o Download do seu cerificado: <br><br> \n
-    <a target='blank' href='". $hash ."'.pdf>". $hash ." </a> ";
+$texto = "Obrigado por participar da Semana de Campo Grande ". $aluno ."! \n
+    Clique no link abaixo para fazer o Download do seu cerificado ou copie e cole o link no seu navegador: \n
+    http://waw.net.br/certificados/". $hash .".pdf";
 $headers = "MIME-Version: 1.1\r\n";
 $headers .= "Content-type: text/plain; charset=UTF-8\r\n";
 $headers .= "From: certificados@waw.net.br\r\n"; // remetente
 $headers .= "Return-Path: certificados@waw.net.br\r\n"; // return-path
-$envio = mail("woodstockwaw@gmail.com", "Assunto", "Certificado de Evento", $headers);
+$envio = mail("woodstockwaw@gmail.com", $assunto, $texto, $headers);
+
+/*Testa o envio*/
  
 if($envio)
- echo "<h2 align=center><br><br>O Certificado foi enviado com para o email ".$email."<br> Em caso de dúvidas envie email para contato@waw.net.br</h2>";
+ echo "<h2 align=center><br><br>O Certificado foi enviado com para ".$email."<br> Em caso de dúvidas envie mensagem para: contato@waw.net.br</h2>";
 else
- echo "<h2 align=center><br><br>A mensagem não pode ser enviada...<br>Envie email para contato@waw.net.br</h2>";
+ echo "<h2 align=center><br><br>A mensagem não pode ser enviada...<br>Envie email para certificados@waw.net.br</h2>";
 exit;
 ?>	
