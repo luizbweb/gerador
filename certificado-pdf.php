@@ -42,7 +42,7 @@ $html = "<div class='certificado'>
         Certificamos que <b>" . $aluno . "</b> participou do <b>" . $atividade. "</b>, ministrado pelo(a) Prof.(a) <b>" . $orientador . "</b>, no perÃ­odo de 18 a 19 de outubro de 2016. <br><br> Codigo do certificado:<br> ". $hash ."
     </div>
 </div>";
-
+/* Gerando o PDF */
 $geraPDF = new mPDF('utf-8', 'A4-L');
 $geraPDF->SetDisplayMode('fullpage');
 $css = file_get_contents("style.css");
@@ -54,5 +54,21 @@ if ($aluno == 'aluno') {
     $geraPDF->Output( $hash.'.pdf', f);
 }
 echo $hash;
+
+/* Enviando o certificao por email */
+
+$assunto = "Certificado da Semana de Campo Grande";
+$texto = "Obrigado por participar da Semana de Campo Grande". $aluno ." ! <br><br> Clique no link abaixo para fazer o Download do seu cerificado: <br><br> \n
+    <a target='blank' href='". $hash ."'.pdf>". $hash ." </a> ";
+$headers = "MIME-Version: 1.1\r\n";
+$headers .= "Content-type: text/plain; charset=UTF-8\r\n";
+$headers .= "From: certificados@waw.net.br\r\n"; // remetente
+$headers .= "Return-Path: certificados@waw.net.br\r\n"; // return-path
+$envio = mail("woodstockwaw@gmail.com", "Assunto", "Certificado de Evento", $headers);
+ 
+if($envio)
+ echo "<h2 align=center><br><br>O Certificado foi enviado com para o email ".$email."<br> Em caso de dúvidas envie email para contato@waw.net.br</h2>";
+else
+ echo "<h2 align=center><br><br>A mensagem não pode ser enviada...<br>Envie email para contato@waw.net.br</h2>";
 exit;
-?>
+?>	
