@@ -37,8 +37,8 @@ while ($dados = mysqli_fetch_array($query)) {
 
 mysqli_close($conecta);
 
-$now = date();
-$hash = hash(sha256, 'mail@mail.com'. $now, false);
+$now = date("d/m/Y H:i:s ");
+$hash = hash(sha256, $now.$email, false);
 
 $html = "<div class='certificado'>
     <div class='texto'>
@@ -49,20 +49,19 @@ $html = "<div class='certificado'>
     </div>
 </div>";
 
-/* Gerando o PDF */
-$geraPDF = new mPDF('utf-8', 'A4-L', s, 'Aegyptus');
-$geraPDF->SetDisplayMode('fullpage');
-$css = file_get_contents("style.css");
-$geraPDF->WriteHTML($css,1);
-$geraPDF->WriteHTML($html);
+/* Se o email estiver cadastrado gera o PDF */
+
 if ($aluno == 'aluno') {
     echo '<h2 align=center><br><br>Seu email não esta cadastrado. <br>Entre em contato conosco atraves do endere&ccedil;o:<br> certificados@waw.net.br</h2>';
 } else {
+	$geraPDF = new mPDF('utf-8', 'A4-L', s, 'Aegyptus');
+	$geraPDF->SetDisplayMode('fullpage');
+	$css = file_get_contents("style.css");
+	$geraPDF->WriteHTML($css,1);
+	$geraPDF->WriteHTML($html);
     $geraPDF->Output( $hash.'.pdf', f);
 
-	echo $hash;
-
-	/* Enviando o certificao por email 
+	/* Enviando o certificao por email */
 
 	$assunto = "Certificado da Semana de Campo Grande";
 	$texto = "Obrigado por participar da Semana de Campo Grande ". $aluno ."! \n
@@ -76,13 +75,14 @@ if ($aluno == 'aluno') {
 	$headers .= "Content-type: text/plain; charset=UTF-8\r\n";
 	$headers .= "From: certificados@waw.net.br\r\n"; // remetente
 	$headers .= "Return-Path: certificados@waw.net.br\r\n"; // return-path
-	$envio = mail("woodstockwaw@gmail.com", $assunto, $texto, $headers);
+	$envio = mail($email, $assunto, $texto, $headers);
 	 
-	if($envio)
+	if($envio) {
 	 echo "<h2 align=center><br><br>O Certificado foi enviado com para ".$email."<br> Em caso de d&uacute;vidas envie mensagem para: contato@waw.net.br</h2>";
-	else
+	}
+	else {
 	 echo "<h2 align=center><br><br>A mensagem n&aatilde;o pode ser enviada...<br>Envie email para certificados@waw.net.br</h2>";
-	 */
+	}
 
 	exit;
 
