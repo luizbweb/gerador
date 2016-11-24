@@ -41,7 +41,10 @@ $hash = hash(sha256, 'mail@mail.com', false);
 
 $html = "<div class='certificado'>
     <div class='texto'>
-        Certificamos que <b>" . $aluno . "</b> participou do <b>" . $atividade. "</b>, ministrado pelo(a) Prof.(a) <b>" . $orientador . "</b>, no perÃ­odo de 18 a 19 de outubro de 2016. <br><br> Codigo do certificado:<br> ". $hash ."
+        Certificamos que <b>" . $aluno . "</b> participou da <b>" . $atividade. "</b>, ministrada por <b>" . $orientador . "</b>, no dia 16 de Novembro de 2016 durante a Semana de Campo Grande. <br><br> Rio de Janeiro, 23 de Novembro de 2016.
+        <div style='font-size: 14px;'>
+        	Codigo do certificado:<br> ". $hash ."
+        </div>
     </div>
 </div>";
 /* Gerando o PDF */
@@ -76,8 +79,8 @@ $envio = mail("woodstockwaw@gmail.com", $assunto, $texto, $headers);
 /*Testa o envio*/
  
 if($envio)
- echo "<h2 align=center><br><br>O Certificado foi enviado com para ".$email."<br> Em caso de dúvidas envie mensagem para: contato@waw.net.br</h2>";
+ echo "<h2 align=center><br><br>O Certificado foi enviado com para ".$email."<br> Em caso de d&uacute;vidas envie mensagem para: contato@waw.net.br</h2>";
 else
- echo "<h2 align=center><br><br>A mensagem não pode ser enviada...<br>Envie email para certificados@waw.net.br</h2>";
+ echo "<h2 align=center><br><br>A mensagem n&aatilde;o pode ser enviada...<br>Envie email para certificados@waw.net.br</h2>";
 exit;
-?>	
+?>
