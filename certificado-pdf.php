@@ -61,8 +61,12 @@ echo $hash;
 
 $assunto = "Certificado da Semana de Campo Grande";
 $texto = "Obrigado por participar da Semana de Campo Grande ". $aluno ."! \n
-    Clique no link abaixo para fazer o Download do seu cerificado ou copie e cole o link no seu navegador: \n
-    http://waw.net.br/certificados/". $hash .".pdf";
+Clique no link abaixo para fazer o Download do seu cerificado ou copie e cole o link no seu navegador: \n
+http://waw.net.br/certificados/". $hash .".pdf \n\n
+Luiz Bruno \n
+WAW Certificados \n
+http://waw.net.br \n
+";
 $headers = "MIME-Version: 1.1\r\n";
 $headers .= "Content-type: text/plain; charset=UTF-8\r\n";
 $headers .= "From: certificados@waw.net.br\r\n"; // remetente
