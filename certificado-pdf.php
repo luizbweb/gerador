@@ -52,7 +52,7 @@ $html = "<div class='certificado'>
 /* Se o email estiver cadastrado gera o PDF */
 
 if ($aluno == 'aluno') {
-    echo '<h2 align=center><br><br>Seu email não esta cadastrado. <br>Entre em contato conosco atraves do endere&ccedil;o:<br> certificados@waw.net.br</h2>';
+    echo '<h2 align=center><br><br>Seu email não esta cadastrado. <br>Entre em contato conosco atrav&eacute;s do endere&ccedil;o:<br> certificados@waw.net.br</h2>';
 } else {
 	$geraPDF = new mPDF('utf-8', 'A4-L', s, 'Aegyptus');
 	$geraPDF->SetDisplayMode('fullpage');
@@ -65,12 +65,11 @@ if ($aluno == 'aluno') {
 
 	$assunto = "Certificado da Semana de Campo Grande";
 	$texto = "Obrigado por participar da Semana de Campo Grande ". $aluno ."! \n
-	Clique no link abaixo para fazer o Download do seu cerificado ou copie e cole o link no seu navegador: \n
-	http://waw.net.br/certificados/". $hash .".pdf \n\n
-	Luiz Bruno \n
-	WAW Certificados \n
-	http://waw.net.br \n
-	";
+Clique no link abaixo para fazer o Download do seu cerificado ou copie e cole o link no seu navegador: \n
+http://waw.net.br/certificados/". $hash .".pdf \n\n
+Luiz Bruno \n
+WAW Certificados \n
+http://waw.net.br \n ";
 	$headers = "MIME-Version: 1.1\r\n";
 	$headers .= "Content-type: text/plain; charset=UTF-8\r\n";
 	$headers .= "From: certificados@waw.net.br\r\n"; // remetente
@@ -78,7 +77,7 @@ if ($aluno == 'aluno') {
 	$envio = mail($email, $assunto, $texto, $headers);
 	 
 	if($envio) {
-	 echo "<h2 align=center><br><br>O Certificado foi enviado com para ".$email."<br> Em caso de d&uacute;vidas envie mensagem para: contato@waw.net.br</h2>";
+	 echo "<h2 align=center><br><br>O Certificado foi enviado para ".$email."<br> Em caso de d&uacute;vidas envie mensagem para: contato@waw.net.br</h2>";
 	}
 	else {
 	 echo "<h2 align=center><br><br>A mensagem n&aatilde;o pode ser enviada...<br>Envie email para certificados@waw.net.br</h2>";
