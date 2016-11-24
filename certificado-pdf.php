@@ -41,14 +41,14 @@ $hash = hash(sha256, 'mail@mail.com', false);
 
 $html = "<div class='certificado'>
     <div class='texto'>
-        Certificamos que <b>" . $aluno . "</b> participou da <b>" . $atividade. "</b>, ministrada por <b>" . $orientador . "</b>, no dia 16 de Novembro de 2016 durante a Semana de Campo Grande. <br><br><br><br> Rio de Janeiro, 23 de Novembro de 2016.
-        <div style='font-size: 14px;'>
-        	<br><br><br><br><br><br><br> codigo: ". $hash ."
+        Certificamos que <u>" . $aluno . "</u> participou da <u>" . $atividade. "</u>, ministrada por <u>" . $orientador . "</u>, no dia 16 de Novembro de 2016 durante a Semana de Campo Grande. <br><br><br><br> Rio de Janeiro, 23 de Novembro de 2016.
+        <div style='font-size: 14px;font-family:arial, helvetica;'>
+        	<br><br><br><br><br><br><br><br><br><br> codigo: ". $hash ."
         </div>
     </div>
 </div>";
 /* Gerando o PDF */
-$geraPDF = new mPDF('utf-8', 'A4-L');
+$geraPDF = new mPDF('utf-8', 'A4-L', s, 'Aegyptus');
 $geraPDF->SetDisplayMode('fullpage');
 $css = file_get_contents("style.css");
 $geraPDF->WriteHTML($css,1);
@@ -56,11 +56,12 @@ $geraPDF->WriteHTML($html);
 if ($aluno == 'aluno') {
     echo '<h2 align=center><br><br>Seu email não esta cadastrado. <br>Entre em contato conosco atraves do endere&ccedil;o:<br> certificados@waw.net.br</h2>';
 } else {
-    $geraPDF->Output( $hash.'.pdf', f);
+	$geraPDF->Output();
+    // $geraPDF->Output( $hash.'.pdf', f);
 
 	echo $hash;
 
-	/* Enviando o certificao por email */
+	/* Enviando o certificao por email 
 
 	$assunto = "Certificado da Semana de Campo Grande";
 	$texto = "Obrigado por participar da Semana de Campo Grande ". $aluno ."! \n
@@ -75,13 +76,13 @@ if ($aluno == 'aluno') {
 	$headers .= "From: certificados@waw.net.br\r\n"; // remetente
 	$headers .= "Return-Path: certificados@waw.net.br\r\n"; // return-path
 	$envio = mail("woodstockwaw@gmail.com", $assunto, $texto, $headers);
-
-	/*Testa o envio*/
 	 
 	if($envio)
 	 echo "<h2 align=center><br><br>O Certificado foi enviado com para ".$email."<br> Em caso de d&uacute;vidas envie mensagem para: contato@waw.net.br</h2>";
 	else
 	 echo "<h2 align=center><br><br>A mensagem n&aatilde;o pode ser enviada...<br>Envie email para certificados@waw.net.br</h2>";
+	 */
+
 	exit;
 
 }
