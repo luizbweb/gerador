@@ -51,7 +51,8 @@ $geraPDF->WriteHTML($html);
 if ($aluno == 'aluno') {
     echo '<h2 align=center><br><br>Seu email não esta cadastrado. <br>Entre em contato conosco atraves do email:<br> lemauezo@gmail.com</h2>';
 } else {
-    $geraPDF->Output();
+    $geraPDF->Output( $hash.'.pdf', f);
 }
+echo $hash;
 exit;
 ?>
