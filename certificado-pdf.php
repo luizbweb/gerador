@@ -59,14 +59,14 @@ if ($aluno == 'aluno') {
 	$css = file_get_contents("style.css");
 	$geraPDF->WriteHTML($css,1);
 	$geraPDF->WriteHTML($html);
-    $geraPDF->Output( $hash.'.pdf', f);
+    $geraPDF->Output( 'files/'.$hash.'.pdf', f);
 
 	/* Enviando o certificao por email */
 
 	$assunto = "Certificado da Semana de Campo Grande";
 	$texto = "Obrigado por participar da Semana de Campo Grande ". $aluno ."! \n
 Clique no link abaixo para fazer o Download do seu cerificado ou copie e cole o link no seu navegador: \n
-http://waw.net.br/certificados/". $hash .".pdf \n\n
+http://waw.net.br/certificados/files/". $hash .".pdf \n\n
 Luiz Bruno \n
 WAW Certificados \n
 http://waw.net.br \n ";
