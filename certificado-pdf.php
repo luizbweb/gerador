@@ -66,7 +66,7 @@ if ($aluno == 'aluno') {
 	$assunto = "Certificado da Semana de Campo Grande";
 	$texto = "Obrigado por participar da Semana de Campo Grande ". $aluno ."! \n
 Clique no link abaixo para fazer o Download do seu cerificado ou copie e cole o link no seu navegador: \n
-http://waw.net.br/certificados/files/". $hash .".pdf \n\n
+http://waw.net.br/certificados-cg/files/". $hash .".pdf \n\n
 Luiz Bruno \n
 WAW Certificados \n
 http://waw.net.br \n ";
