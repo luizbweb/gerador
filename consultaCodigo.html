@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Inserir Participante</title>
+        <title>Consulta Certificados</title>
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <style>
@@ -24,13 +24,9 @@
         <div class="formulario-container">
             <form name="formulario-de-aluno" method="post" action="actionInserirParticipante.php">
             <div class="box">
-                <p align=""><i>Preencha os dados dos participantes e clique em "Inserir Participante" ou "Finalizar".</i></p>
-                <p>Atividade: <input type="text" name="atividade" value="" placeholder="Titulo da Atividade"></p>
-                <p>Nome do Participante: <input type="text" name="Participante" value="" placeholder="José"></p>
-                <p>Email do Paricipante: <input type="email" name="email" value="" placeholder="nome@provedor.com"></p>
-                <!-- <p>Matrícula: <input type="text" name="matricula" value="" placeholder="000.000.0000"></p> -->
-                <input type="submit" value="Inserir Paricipante"><br /><br />
-                <input type="submit" value="Finalizar">
+                <p align=""><i>Confira a autenticidade do certificado copiando e colando o c&oacute;digo no campo abaixo.<br> Depois clique no bot&aacute;o "Consultar".</i></p>
+                <p>C&oacute;digo: <input type="text" name="codigo" value="" placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxx..."></p>
+                <input type="submit" value="Consultar">
             </div>
             </form>
         </div>
