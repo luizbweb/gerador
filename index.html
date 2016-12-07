@@ -1,29 +1,53 @@
-<html>
-	<head>
-		<title>Gerador de Certificados</title>
-	</head>
-	<style type="text/css">
-		.topo {
-			text-align: center;
-		}
-		img {
-			width: 550px;
-			position: relative;
-			//left: 425px;
-		}
-		.content {
-			position: relative;
-			text-align: center;
-		}
+<!DOCTYPE html>
+<!-- 
+    Criar um formulario para envio de email e atividade com estilo da Semana de CG.
+    Caso o email esteja cadastrado enviar o link para Download do Certificado.
+    Caso não esteja, oferecer um email para contato.
+    Criar formulário para cadastro de atividades
+    Reformular o Banco de Dados para cadastro de atividade.
 
-	</style>
-	<body>
-		<div class="topo">
-			<img src="img/logo-semana-cg.jpg" />
-		</div>
-		<div class="content">
-			<h1>Obrigado por participar da Semana de Campo Grande!</h1>
-			<h2>Retorne após o dia 23/11/2016 para gerar o seu certificado.</h2>
-		</div>
-	</body>
-</htm>
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Gerador de certificados</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <style>
+        body {
+            background-image:url('img/logo-waw.png');
+            background-repeat:no-repeat;
+            background-position: 100px 400px;
+            font-family:sans-serif;
+            color: #442000;
+        }
+    </style>
+    <body>
+    <!--
+        <div class="logo">
+            <img src="logo-jornada-menor.png">
+        </div>
+    -->
+        <div class="topo">
+            <h1>GERADOR DE CERTIFICADOS</h1>
+        </div>
+        <div class="formulario-container">
+            <form name="formulario-de-aluno" method="post" action="certificado-pdf.php">
+            <div class="box">
+                <p align=""><i>Preencha os seus dados e clique em "Gerar Certificado".<br /> Confira as informações e salve o certificado em seu computador.</i></p>
+                <p>Email: <input type="email" name="email" value="" placeholder="nome@provedor.com"></p>
+                <!--
+                <p>Atividade:
+                    <select name="atividade">
+                        <option>Escolha a Atividade</option>
+                        <option>Atividade 2</option>
+                        <option>Atividade 3</option>
+                    </select>
+                </p>
+                <p>Matrícula: <input type="text" name="matricula" value="" placeholder="000.000.0000"></p> -->
+                <input type="submit" value="Gerar Certificado">
+            </div>
+            </form>
+        </div>
+    </body>
+</html>
