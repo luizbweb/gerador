@@ -11,11 +11,10 @@
 		public $hash;
 		public $local;
 		public $hora;
-		
+
 		function __construct(argument)
 		{
 			# code...
 		}
 	}
-
 ?>

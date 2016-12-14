@@ -1,35 +1,52 @@
 <?php
-	
+
 	/*
 	 * Gerador de Certificados WAW
 	 * @luizbweb
 	 */
 	include_once 'Participante.class.php';
 
-	class Atividade 
+	class Atividade
 	{
-		
+
 		public $nomeAtividade;
+		public $dataAtividade;
+		public $horaAtividade;
 		public $presentes;
 
-		public function insereNomeAtividade( $argAtividade ) {
-
+		function insereNomeAtividade( $argAtividade ) {
 			$this->nomeAtividade = $argAtividade;
 		}
 
-		public function insereParticipante( Participante $participante) {
-			
-			$this->presentes[] = $participante;
-
+		function insereDataAtividade( $argData ) {
+			// Tentar forçar ao formato da data.
+			$this->dataAtividade = $argData;
 		}
 
-		public function exibeParticipantes() {
+		function insereHoraAtividade( $argHora ) {
+			// Tentar forçar o formato da hora.
+			$this->horaAtividade = $argHora;
+		}
 
+		function insereParticipante( Participante $participante) {
+			$this->presentes[] = $participante;
+		}
+
+		function __get( $name ) {
+			return $this->$name;
+		}
+
+		function exibeParticipantes() {
 			foreach ($this->presentes as $participante) {
-				
 				echo "Nome: ".$participante->nome ." | E-mail: ".$participante->email ." | Telefone: ". $participante->telefone;
 			}
 		}
+
+		function __destruct () {
+
+			echo "Terminei!";
+		}
+
 	}
 
 ?>
