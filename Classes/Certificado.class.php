@@ -6,6 +6,7 @@
 
 	include_once 'Participante.class.php';
 	include_once 'Atividade.class.php';
+	include('../criadorPDF/mpdf.php');
 
 	class Certificado {
 
@@ -34,6 +35,25 @@
 			$this->hash = hash( 'sha256', $this->now.'luizbweb@gmail.com', false );
 			echo '<br> HASH: ';
 			echo $this->hash;
+
+			$html = "<div class='certificado'>
+			    <div class='texto'>
+			        Certificamos que <u>" . $this->participante->nome . "</u>
+					participou da <u>" . $this->atividade->nomeAtividade. "</u>,
+					organizada por <u>" . $this->atividade->organizadorAtividade .
+					"</u>, no dia ". $this->atividade->dataAtividade . ". <br><br><br><br>
+					 Rio de Janeiro, 23 de Novembro de 2016.
+			        <div style='font-size: 14px;font-family:arial, helvetica;'>
+			        	<br><br><br><br><br><br><br><br><br><br> codigo: ". $this->hash ."
+			        </div>
+			    </div>
+			</div>";
+			$geraPDF = new mPDF('utf-8', 'A4-L', s);
+			$geraPDF->SetDisplayMode('fullpage');
+			$css = file_get_contents("../style.css");
+			$geraPDF->WriteHTML($css,1);
+			$geraPDF->WriteHTML($html);
+		    $geraPDF->Output( '../files/'.$this->hash.'.pdf', f);
 		}
 	}
 ?>

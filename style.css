@@ -7,16 +7,11 @@
 @page {
     margin: 0px;
 }
-@font-face {
-    font-family: 'Alexander';
-    src: url('fontes/alexander.otf') format('opentype');
-}
 .texto {
     text-align: left;
     padding-top: 260px;
     padding-left: 120px;
     width: 800px;
-    font-family: 'Aegyptus';
     font-size: 26pt;
 }
 .logo {

@@ -11,6 +11,7 @@
 	$atividade = new Atividade();
 	$atividade->insereParticipante( $participante );
 	$atividade->insereNomeAtividade('Aula');
+	$atividade->insereOrganizador('Luiz Bruno');
 	$atividade->insereDataAtividade('02/11/2016');
 	$atividade->insereHoraAtividade('12:00');
 	$atividade->insereLocal('UEZO');

@@ -12,6 +12,7 @@
 		public $nomeAtividade;
 		public $dataAtividade;
 		public $horaAtividade;
+		public $organizadorAtividade;
 		public $presentes;
 		public $local;
 
@@ -27,6 +28,9 @@
 		function insereHoraAtividade( $argHora ) {
 			// Tentar forçar o formato da hora.
 			$this->horaAtividade = $argHora;
+		}
+		function insereOrganizador( $argOrganizador ) {
+			$this->organizadorAtividade = $argOrganizador;
 		}
 
 		function insereParticipante( Participante $participante) {
@@ -46,6 +50,10 @@
 
 		function retornaHoraAtividade() {
 			return $this->horaAtividade;
+		}
+
+		function retornaOrganizador() {
+			return $this->organizadorAtividade;
 		}
 
 		function retornaParticipantes( $argId ) {
