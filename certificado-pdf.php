@@ -52,7 +52,7 @@ $html = "<div class='certificado'>
 /* Se o email estiver cadastrado gera o PDF */
 
 if ($aluno == 'aluno') {
-    echo '<h2 align=center><br><br>Seu email não esta cadastrado. <br>Entre em contato conosco atrav&eacute;s do endere&ccedil;o:<br> certificados@waw.net.br</h2>';
+    echo '<h2 align=center><br><br>Seu email nï¿½o esta cadastrado. <br>Entre em contato conosco atrav&eacute;s do endere&ccedil;o:<br> certificados@waw.net.br</h2>';
 } else {
 	$geraPDF = new mPDF('utf-8', 'A4-L', s, 'Aegyptus');
 	$geraPDF->SetDisplayMode('fullpage');
@@ -75,7 +75,7 @@ http://waw.net.br \n ";
 	$headers .= "From: certificados@waw.net.br\r\n"; // remetente
 	$headers .= "Return-Path: certificados@waw.net.br\r\n"; // return-path
 	$envio = mail($email, $assunto, $texto, $headers);
-	 
+
 	if($envio) {
 	 echo "<h2 align=center><br><br>O Certificado foi enviado para ".$email."<br> Em caso de d&uacute;vidas envie mensagem para: contato@waw.net.br</h2>";
 	}

@@ -13,6 +13,7 @@
 		public $dataAtividade;
 		public $horaAtividade;
 		public $presentes;
+		public $local;
 
 		function insereNomeAtividade( $argAtividade ) {
 			$this->nomeAtividade = $argAtividade;
@@ -29,7 +30,10 @@
 		}
 
 		function insereParticipante( Participante $participante) {
-			$this->presentes[] = $participante;
+			$this->presentes[$participante->id] = $participante;
+		}
+		function insereLocal( $argLocal ) {
+			$this->local = $argLocal;
 		}
 
 		function retornaAtividade() {
@@ -44,8 +48,8 @@
 			return $this->horaAtividade;
 		}
 
-		function retornaParticipantes() {
-			return $this->presentes;
+		function retornaParticipantes( $argId ) {
+			return $this->presentes[ $argID ];
 		}
 
 		function exibeParticipantes() {
@@ -54,9 +58,12 @@
 			}
 		}
 
-		function __destruct () {
+		function retornaLocal() {
+			return $this->local;
+		}
 
-			echo "Terminei!";
+		function __destruct () {
+			// echo "Terminei!";
 		}
 
 	}

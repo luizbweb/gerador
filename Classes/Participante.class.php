@@ -8,6 +8,7 @@
 
 		// Declara os atributos
 
+		public $id;
 		public $nome;
 		public $email;
 		public $telefone;
