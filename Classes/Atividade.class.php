@@ -32,8 +32,20 @@
 			$this->presentes[] = $participante;
 		}
 
-		function __get( $name ) {
-			return $this->$name;
+		function retornaAtividade() {
+			return $this->nomeAtividade;
+		}
+
+		function retornaDataAtividade() {
+			return $this->dataAtividade;
+		}
+
+		function retornaHoraAtividade() {
+			return $this->horaAtividade;
+		}
+
+		function retornaParticipantes() {
+			return $this->presentes;
 		}
 
 		function exibeParticipantes() {
