@@ -2,3 +2,5 @@ criadorPDF/**
 conection.php
 consulta.php
 certificado.php
+PDOConnectionFactory.class.php
+
