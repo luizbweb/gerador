@@ -1,11 +1,13 @@
 <?php
 
 	function __autoload( $classe ) {
-		include_once 'Classes/{$classe}.class.php';
+		include_once "Classes/{$classe}.class.php";
 	}
 
-	$conecta = new PDOConnectionFactory();
-	$conecta->getConnection();
+	/* Conexão com o Banco de Dado */
+	include('conection.php');
+
+	$conecta = new mysqli(HOST, USER, PASS, DB) or print(mysql_error());
 
 	$email = 'luizbweb@gmail.com';
 
@@ -20,7 +22,8 @@
 	    $nomeAtividade = $dados['atividade'];
 	}
 
-	$conecta->Close();
+	mysqli_close($conecta);
+	// $conecta->Close();
 
 	$participante = new Participante();
 	$participante->nome = $aluno;
