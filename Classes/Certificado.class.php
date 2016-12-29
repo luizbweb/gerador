@@ -6,7 +6,7 @@
 
 	include_once 'Participante.class.php';
 	include_once 'Atividade.class.php';
-	include('../criadorPDF/mpdf.php');
+	include 'criadorPDF/mpdf.php';
 
 	class Certificado {
 
@@ -50,10 +50,10 @@
 			</div>";
 			$geraPDF = new mPDF('utf-8', 'A4-L', s);
 			$geraPDF->SetDisplayMode('fullpage');
-			$css = file_get_contents("../style.css");
+			$css = file_get_contents('style.css');
 			$geraPDF->WriteHTML($css,1);
 			$geraPDF->WriteHTML($html);
-		    $geraPDF->Output( '../files/'.$this->hash.'.pdf', f);
+		    $geraPDF->Output( 'files/'.$this->hash.'.pdf', f);
 		}
 	}
 ?>

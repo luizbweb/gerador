@@ -1,11 +1,11 @@
 <?php
 
+	/* Conexão com o Banco de Dado */
+	include "conection.php";
+
 	function __autoload( $classe ) {
 		include_once "Classes/{$classe}.class.php";
 	}
-
-	/* Conexão com o Banco de Dado */
-	include('conection.php');
 
 	$conecta = new mysqli(HOST, USER, PASS, DB) or print(mysql_error());
 
