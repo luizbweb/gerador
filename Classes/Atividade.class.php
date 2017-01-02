@@ -8,13 +8,14 @@
 
 	class Atividade
 	{
-
+		public $idAtividade; // criar metodos
 		public $nomeAtividade;
 		public $dataAtividade;
 		public $horaAtividade;
 		public $organizadorAtividade;
 		public $presentes;
 		public $local;
+		public $urlAtividade; // criar metodos
 
 		function insereNomeAtividade( $argAtividade ) {
 			$this->nomeAtividade = $argAtividade;
@@ -40,6 +41,14 @@
 			$this->local = $argLocal;
 		}
 
+		function insereUrlAtividade( $argUrlAtividade ) {
+			$this->urlAtividade = $argAtividade;
+		}
+
+		function retornaIdAtividade( )
+		{
+			return $this->idAtividade;
+		}
 		function retornaAtividade() {
 			return $this->nomeAtividade;
 		}
@@ -68,6 +77,10 @@
 
 		function retornaLocal() {
 			return $this->local;
+		}
+
+		function retornaUrlAtividade () {
+			return $this->urlAtividade;
 		}
 
 		function __destruct () {
