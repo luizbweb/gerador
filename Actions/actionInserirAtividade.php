@@ -1,3 +1,11 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+        <title>Atividade Registrada!</title>
+    </head>
+    <body>
+
 <?php
 
 /*
@@ -14,7 +22,7 @@ $local = $_POST['local'];
 $data = $_POST['data'];
 $organizador = $_POST['organizador'];
 $email = $_POST['email'];
-$password = $_POST['password'];
+$senha = $_POST['password'];
 $pagina = $_POST['pagina'];
 $desc = $_POST['desc'];
 
@@ -23,17 +31,21 @@ $atividade->insereNomeAtividade( $nome_atividade );
 $atividade->insereLocal( $local );
 $atividade->insereDataAtividade( $data );
 $atividade->insereOrganizador( $organizador );
+$atividade->insereEmailOrganizador( $email );
+$atividade->insereSenhaOrganizador( $senha );
 $atividade->insereUrlAtividade( $pagina );
 $atividade->insereDescAtividade( $desc );
 
 // Cria um participante com os dados do organizador
 $participante = new Participante();
 $participante->nome = $organizador;
-$participante->senha = $password;
+$participante->senha = $senha;
 $participante->email = $email;
 
 // Associa o organizador como primeiro Participante
 $atividade->insereParticipante( $participante );
+
+/*
 
 // Exibe os dados inseridos
 $testa[0] = $atividade->retornaAtividade();
@@ -45,8 +57,17 @@ $testa[5] = $atividade->retornaDescAtividade();
 
 foreach ($testa as $retornos) {
     echo $retornos;
+    echo '<br>';
 }
+echo '<br>';
+// $atividade->exibeParticipantes();
 
-$atividade->exibeParticipantes();
+*/
+
+$atividade->registraAtividade();
+
 
 ?>
+
+    </body>
+</html>

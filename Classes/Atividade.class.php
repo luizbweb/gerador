@@ -7,8 +7,6 @@
 	include_once 'Participante.class.php';
 	include('../conection.php');
 
-	$conecta = new mysqli(HOST, USER, PASS, DB) or print(mysql_error());
-
 	class Atividade
 	{
 		public $idAtividade;
@@ -28,7 +26,7 @@
 
 		function insereDataAtividade( $argData ) {
 			// Tentar forçar ao formato da data.
-			$this->dataAtividade = $argData;
+			$this->dataAtividade = implode('-', array_reverse(explode('-', $argData)));
 		}
 
 		function insereOrganizador( $argOrganizador ) {
@@ -59,9 +57,13 @@
 		}
 
 		function registraAtividade () {
+			$conecta = new mysqli(HOST, USER, PASS, DB) or print(mysql_error());
+
 			$nome =	$this->nomeAtividade;
 			$data = $this->dataAtividade;
 			$organizador = $this->organizadorAtividade;
+			$email = $this->emailOrganizador;
+			$senha = $this->senhaOrganizador;
 			// $presentes = $this->presentes;
 			$local = $this->local;
 			$url = $this->urlAtividade;
@@ -76,10 +78,15 @@
 			$stmt->execute();
 			*/
 
-			$sql = 'INSERT INTO Atividades ( atividade, data_fim, local, organizador,
-				email_organizador, senha_organizador, url_atividade, descricao )';
+			$sql = "INSERT INTO Atividades ( atividade, data_fim, local, organizador,
+				email_organizador, senha_organizador, url_atividade, descricao )
+				values(?, ?, ?, ?, ?, ?, ?, ?)";
 			$stmt = $conecta->prepare( $sql );
-			$stmt->bind_param(ssssssss, $nome, $data, $local, $organizador,  )
+			$stmt->bind_param('ssssssss', $nome, $data, $local, $organizador, $email,
+			  	$senha, $url, $descricao );
+			$stmt->execute();
+
+			mysqli_close($conecta);
 
 		}
 
@@ -129,7 +136,5 @@
 		}
 
 	}
-
-	mysqli_close($conecta);
 
 ?>

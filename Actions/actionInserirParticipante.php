@@ -15,6 +15,9 @@ $tel = $_POST['tel'];
 
 $participante = new Participante();
 
-$participante->insereParticipante( $nome );
+$participante->nome = $nome;
+$Participante->email= $email;
+$participante->telefone = $tel;
+
 
 ?>
