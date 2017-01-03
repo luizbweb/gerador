@@ -5,14 +5,18 @@
 	 * @luizbweb
 	 */
 	include_once 'Participante.class.php';
+	include('../conection.php');
+
+	$conecta = new mysqli(HOST, USER, PASS, DB) or print(mysql_error());
 
 	class Atividade
 	{
-		public $idAtividade; // criar metodos
+		public $idAtividade;
 		public $nomeAtividade;
 		public $dataAtividade;
-		public $horaAtividade;
 		public $organizadorAtividade;
+		public $emailOrganizador; // Criar metodos
+		private $senhaOrganizador; // Criar metodos
 		public $presentes;
 		public $local;
 		public $urlAtividade;
@@ -27,12 +31,16 @@
 			$this->dataAtividade = $argData;
 		}
 
-		function insereHoraAtividade( $argHora ) {
-			// Tentar forçar o formato da hora.
-			$this->horaAtividade = $argHora;
-		}
 		function insereOrganizador( $argOrganizador ) {
 			$this->organizadorAtividade = $argOrganizador;
+		}
+
+		function insereEmailOrganizador( $argEmail )  {
+			$this->emailOrganizador = $argEmail;
+		}
+
+		function insereSenhaOrganizador( $argSenha ) {
+			$this->senhaOrganizador =  $argSenha;
 		}
 
 		function insereParticipante( Participante $participante) {
@@ -50,8 +58,32 @@
 			$this->descAtividade = $argDesc;
 		}
 
-		function retornaIdAtividade( )
-		{
+		function registraAtividade () {
+			$nome =	$this->nomeAtividade;
+			$data = $this->dataAtividade;
+			$organizador = $this->organizadorAtividade;
+			// $presentes = $this->presentes;
+			$local = $this->local;
+			$url = $this->urlAtividade;
+			$descricao = $this->descAtividade;
+
+			// Faz a inserção no banco de dados conforme o modelo:
+			/*
+			$mysqli = new mysqli('host','usuario','senha','base');
+			$sql = 'INSERT INTO tabela (campo1, campo2, campo3) values(?,?,?)';
+			$stmt = $mysqli->prepare($sql);
+			$stmt->bind_param("sss", $variavel1, $variavel2, $varivavel3);
+			$stmt->execute();
+			*/
+
+			$sql = 'INSERT INTO Atividades ( atividade, data_fim, local, organizador,
+				email_organizador, senha_organizador, url_atividade, descricao )';
+			$stmt = $conecta->prepare( $sql );
+			$stmt->bind_param(ssssssss, $nome, $data, $local, $organizador,  )
+
+		}
+
+		function retornaIdAtividade(){
 			return $this->idAtividade;
 		}
 		function retornaAtividade() {
@@ -97,5 +129,7 @@
 		}
 
 	}
+
+	mysqli_close($conecta);
 
 ?>
