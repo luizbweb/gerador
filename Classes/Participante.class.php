@@ -12,6 +12,7 @@
 		public $nome;
 		public $email;
 		public $telefone;
+		public $senha;
 
 		public function __set($name, $value) {
 
