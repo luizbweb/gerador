@@ -22,7 +22,9 @@ $atividade = new Atividade();
 $atividade->insereNomeAtividade( $nome_atividade );
 $atividade->insereLocal( $local );
 $atividade->insereDataAtividade( $data );
-$atividade->insereOrganizador($organizador);
+$atividade->insereOrganizador( $organizador );
+$atividade->insereUrlAtividade( $pagina );
+$atividade->insereDescAtividade( $desc );
 
 // Cria um participante com os dados do organizador
 $participante = new Participante();
@@ -31,9 +33,20 @@ $participante->senha = $password;
 $participante->email = $email;
 
 // Associa o organizador como primeiro Participante
-$participante->insereParticipante( $participante );
+$atividade->insereParticipante( $participante );
 
+// Exibe os dados inseridos
+$testa[0] = $atividade->retornaAtividade();
+$testa[1] = $atividade->retornaLocal();
+$testa[2] = $atividade->retornaDataAtividade();
+$testa[3] = $atividade->retornaOrganizador();
+$testa[4] = $atividade->retornaUrlAtividade();
+$testa[5] = $atividade->retornaDescAtividade();
 
+foreach ($testa as $retornos) {
+    echo $retornos;
+}
 
+$atividade->exibeParticipantes();
 
 ?>

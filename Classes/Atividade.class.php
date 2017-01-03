@@ -15,7 +15,8 @@
 		public $organizadorAtividade;
 		public $presentes;
 		public $local;
-		public $urlAtividade; // criar metodos
+		public $urlAtividade;
+		public $descAtividade;
 
 		function insereNomeAtividade( $argAtividade ) {
 			$this->nomeAtividade = $argAtividade;
@@ -42,7 +43,11 @@
 		}
 
 		function insereUrlAtividade( $argUrlAtividade ) {
-			$this->urlAtividade = $argAtividade;
+			$this->urlAtividade = $argUrlAtividade;
+		}
+
+		function insereDescAtividade( $argDesc ) {
+			$this->descAtividade = $argDesc;
 		}
 
 		function retornaIdAtividade( )
@@ -81,6 +86,10 @@
 
 		function retornaUrlAtividade () {
 			return $this->urlAtividade;
+		}
+
+		function retornaDescAtividade () {
+			return $this->descAtividade;
 		}
 
 		function __destruct () {
