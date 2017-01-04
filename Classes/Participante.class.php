@@ -4,6 +4,8 @@
 	 * @luizbweb
 	 */
 
+include('../conection.php');
+
 	class Participante {
 
 		// Declara os atributos
@@ -26,7 +28,7 @@
 
 		}
 
-		function registraAtividade () {
+		function registraParticipante () {
 			$conecta = new mysqli(HOST, USER, PASS, DB) or print(mysql_error());
 
 			$id_atividade =	$this->idAtividade;
