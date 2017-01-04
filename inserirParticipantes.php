@@ -1,5 +1,5 @@
 <?php
-    $nome_atividade = $_GET['atividade'];
+    $id_atividade = $_GET['atividade'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,10 +22,10 @@
             <h1>GERADOR DE CERTIFICADOS</h1>
         </div>
         <div class="formulario-container">
-            <form name="formulario-de-aluno" method="post" action="actionInserirParticipante.php">
+            <form name="formulario-de-aluno" method="post" action="Actions/actionInserirParticipante.php">
             <div class="box">
                 <p align=""><i>Preencha os dados dos participantes e clique em "Inserir Participante" ou "Finalizar".</i></p>
-                <p>Atividade: <input type="text" name="atividade"  <?php echo "value=".$nome_atividade; ?> placeholder="Titulo da Atividade"></p>
+                <input type="hidden" name="atividade"  <?php echo "value=".$id_atividade; ?> >
                 <p>Nome do Participante: <input type="text" name="participante" value="" placeholder="José"></p>
                 <p>Email do Paricipante: <input type="email" name="email" value="" placeholder="nome@provedor.com"></p>
                 <p>Telefone do Paricipante: <input type="text" name="tel" value="" placeholder="(00)00000-0000"></p>

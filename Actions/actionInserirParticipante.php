@@ -8,16 +8,31 @@
 
 include_once '../Classes/Participante.class.php';
 
+// Obtem dados do formulario
+
 $atividade = $_POST['atividade'];
 $nome = $_POST['participante'];
 $email = $_POST['email'];
 $tel = $_POST['tel'];
 
+// Cria o objeto participante
 $participante = new Participante();
 
+$participante->idAtividade = $atividade;
 $participante->nome = $nome;
-$Participante->email= $email;
+$participante->email= $email;
 $participante->telefone = $tel;
 
+// Registra no Banco de dados
+$participante->registraParticipante();
+
+echo $participante->idAtividade;
+echo "<br>";
+echo $participante->nome;
+echo "<br>";
+echo $participante->email;
+echo "<br>";
+echo $participante->telefone;
+echo "<br>";
 
 ?>

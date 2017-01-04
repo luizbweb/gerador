@@ -41,6 +41,7 @@
 			$this->senhaOrganizador =  $argSenha;
 		}
 
+		// Esta função é realmente util ou pode ser feita por relacionamento do BD?
 		function insereParticipante( Participante $participante) {
 			$this->presentes[$participante->id] = $participante;
 		}
@@ -90,10 +91,25 @@
 
 		}
 
-		function retornaIdAtividade(){
+		function retornaIdAtividade( $argTitulo ){
+			// Consulta $argTitulo no banco de dados para obter o idAtividade
+			$conecta = new mysqli(HOST, USER, PASS, DB) or print(mysql_error());
+			$titulo = $argTitulo;
+			$sql = "SELECT * FROM `Atividades` WHERE `atividade` LIKE '". $titulo ."' LIMIT 1";
+			$query = $conecta -> query($sql);
+
+			/* Adicionando os dados às variàveis */
+
+			while ($dados = mysqli_fetch_array($query)) {
+			    $this->idAtividade = $dados['cod'];
+			}
+
 			return $this->idAtividade;
+
+			mysqli_close($conecta);
 		}
-		function retornaAtividade() {
+		function retornaAtividade( $argId ) {
+			// consultar o Id no banco de dados e retornar o titulo da atividade.
 			return $this->nomeAtividade;
 		}
 

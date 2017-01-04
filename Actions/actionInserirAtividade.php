@@ -1,11 +1,3 @@
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
-        <title>Atividade Registrada!</title>
-    </head>
-    <body>
-
 <?php
 
 /*
@@ -65,9 +57,16 @@ echo '<br>';
 */
 
 $atividade->registraAtividade();
-
+$id_atividade = $atividade->retornaIdAtividade( $nome_atividade );
 
 ?>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="refresh" content="3;../inserirParticipantes.php?atividade=<?php echo $id_atividade; ?>"
+        <title>Atividade Registrada!</title>
+    </head>
+    <body>
 
     </body>
 </html>
