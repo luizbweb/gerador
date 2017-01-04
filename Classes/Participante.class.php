@@ -26,26 +26,22 @@
 
 		}
 
-		function registraParticipante(){
-			function registraAtividade () {
-				$conecta = new mysqli(HOST, USER, PASS, DB) or print(mysql_error());
+		function registraAtividade () {
+			$conecta = new mysqli(HOST, USER, PASS, DB) or print(mysql_error());
 
-				$id_atividade =	$this->idAtividade;
-				$nome = $this->nome;
-				$email = $this->email;
-				$tel = $this->telefone;
+			$id_atividade =	$this->idAtividade;
+			$nome = $this->nome;
+			$email = $this->email;
+			$tel = $this->telefone;
 
-				$sql = "INSERT INTO Participantes ( cod_atividade, nome_participante, email_participante,
-					tel_participante )
-					values(?, ?, ?, ?)";
-				$stmt = $conecta->prepare( $sql );
-				$stmt->bind_param('ssss', $id_atividade, $nome, $email,	$tel);
-				$stmt->execute();
+			$sql = "INSERT INTO Participantes ( cod_atividade, nome_participante, email_participante,
+				tel_participante )
+				values(?, ?, ?, ?)";
+			$stmt = $conecta->prepare( $sql );
+			$stmt->bind_param('ssss', $id_atividade, $nome, $email,	$tel);
+			$stmt->execute();
 
-				mysqli_close($conecta);
-
-			}
-
+			mysqli_close($conecta);
 		}
 
 
