@@ -5,7 +5,7 @@
 	 * @luizbweb
 	 */
 	include_once 'Participante.class.php';
-	include('../conection.php');
+	// include_once 'conection.php';
 
 	class Atividade
 	{

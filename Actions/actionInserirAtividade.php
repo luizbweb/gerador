@@ -63,7 +63,7 @@ $id_atividade = $atividade->retornaIdAtividade( $nome_atividade );
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <meta http-equiv="refresh" content="3;../inserirParticipantes.php?atividade=<?php echo $id_atividade; ?>"
+        <meta http-equiv="refresh" content="3;../inserirParticipantes.php?atividade=<?php echo $id_atividade; ?>&n=0 "
         <title>Atividade Registrada!</title>
     </head>
     <body>

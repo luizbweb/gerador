@@ -4,7 +4,7 @@
 	 * @luizbweb
 	 */
 
-include('../conection.php');
+ include_once 'conection.php';
 
 	class Participante {
 

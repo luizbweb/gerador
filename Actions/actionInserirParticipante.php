@@ -26,6 +26,17 @@ $participante->telefone = $tel;
 // Registra no Banco de dados
 $participante->registraParticipante();
 
+?>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="refresh" content="3;../index.html>"
+        <title>Participantes Registrados!</title>
+    </head>
+    <body>
+<?php
+
 echo $participante->idAtividade;
 echo "<br>";
 echo $participante->nome;
