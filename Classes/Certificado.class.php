@@ -57,7 +57,7 @@
 		}
 
 		function consultaCertificado( $argCodCertificado ) {
-			// Consulta no Banco de Dados se o Certificado é real.
+			// Consulta no Banco de Dados se o Certificado é real
 		}
 	}
 ?>

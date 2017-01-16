@@ -69,10 +69,10 @@
                 <!-- <p>Matrícula: <input type="text" name="matricula" value="" placeholder="000.000.0000"></p> -->
                 <input type="submit" value="Inserir Paricipante"><br /><br />
             </form>
-            <form name="formulario-de-aluno" method="post"
+            <!-- <form name="formulario-de-aluno" method="post"
                 action="index.html">
                 <p align="right"><input type="submit" value="Finalizar"></p>
-            </form>
+            </form> -->
             </div>
             <div class="box">
                 <p align="right">

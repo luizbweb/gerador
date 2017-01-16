@@ -53,7 +53,7 @@
 			$query = $conecta -> query($sql);
 
 			/* Adicionando os dados às variàveis */
-			echo '<table align="right">';
+			echo '<table align="right" cellspacing="7">';
 			echo '<tr>';
 			echo '<th>Nome</th><th>Email</th><th>Telefone</th>';
 			echo '</tr>';
@@ -66,7 +66,14 @@
 				echo $dados['tel_participante'];
 				echo ' </td><td> ';
 			}
-			echo '</table>';
+            echo '</tr><tr>';
+            echo '<td colspan="3">';
+            echo '<form name="formulario-de-aluno" method="post"
+                    action="index.html">
+                    <p align="right"><input type="submit" value="Finalizar"></p>
+                </form>';
+            echo '</td>';
+			echo '</tr></table>';
 
 			mysqli_close($conecta);
 			/*
