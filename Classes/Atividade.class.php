@@ -41,8 +41,8 @@
 			$this->senhaOrganizador =  $argSenha;
 		}
 
-		// Esta função é realmente util ou pode ser feita por relacionamento do BD?
-		function insereParticipante( Participante $participante) {
+		// Recebe o ID da atividade e retorna uma lista de todos os participantes
+		function registraPresentes( Participante $participante) {
 			$this->presentes[$participante->id] = $participante;
 		}
 		function insereLocal( $argLocal ) {
@@ -105,12 +105,34 @@
 			}
 
 			return $this->idAtividade;
-
 			mysqli_close($conecta);
 		}
-		function retornaAtividade( $argId ) {
+
+		function retornaNomeAtividade( $argId ) {
 			// consultar o Id no banco de dados e retornar o titulo da atividade.
 			return $this->nomeAtividade;
+		}
+
+		function retornaAtividade( $argTitulo ) {
+			// Busca atividade no banco de dados com base seu titulo.
+			$conecta = new mysqli(HOST, USER, PASS, DB) or print(mysql_error());
+			$titulo = $argTitulo;
+			$sql = "SELECT * FROM `Atividades` WHERE `atividade` LIKE '". $titulo ."' LIMIT 1";
+			$query = $conecta -> query($sql);
+
+			/* Adicionando os dados às variàveis */
+
+			while ($dados = mysqli_fetch_array($query)) {
+				$this->idAtividade = $dados['cod'];
+				$this->nomeAtividade = $dados['atividade'];
+				$this->dataAtividade = $dados['data_fim'];
+				$this->organizadorAtividade = $dados['organizador'];
+				$this->emailOrganizador = $dados['email_organizador'];
+				$this->senhaOrganizador = $dados['senha_organizador'];
+				$this->local = $dados['local'];
+				$this->urlAtividade = $dados['url_atividade'];
+				$this->descAtividade = $dados['descricao'];
+			}
 		}
 
 		function retornaDataAtividade() {
