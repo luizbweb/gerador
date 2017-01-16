@@ -55,5 +55,9 @@
 			$geraPDF->WriteHTML($html);
 		    $geraPDF->Output( 'files/'.$this->hash.'.pdf', f);
 		}
+
+		function consultaCertificado( $argCodCertificado ) {
+			// Consulta no Banco de Dados se o Certificado é real.
+		}
 	}
 ?>

@@ -15,7 +15,6 @@
 		public $nome;
 		public $email;
 		public $telefone;
-		public $senha;
 
 		public function __set($name, $value) {
 
@@ -42,6 +41,56 @@
 			$stmt = $conecta->prepare( $sql );
 			$stmt->bind_param('ssss', $id_atividade, $nome, $email,	$tel);
 			$stmt->execute();
+
+			mysqli_close($conecta);
+		}
+
+		function exibeParticipantes ( $argIdAtividade ) {
+			// Exibe todos os participantes da atividade com o Id passado.
+			$conecta = new mysqli(HOST, USER, PASS, DB) or print(mysql_error());
+			$cod = $argIdAtividade;
+			$sql = "SELECT * FROM `Participantes` WHERE `cod_atividade` LIKE '". $cod ."' ";
+			$query = $conecta -> query($sql);
+
+			/* Adicionando os dados às variàveis */
+			echo '<table align="right">';
+			echo '<tr>';
+			echo '<th>Nome</th><th>Email</th><th>Telefone</th>';
+			echo '</tr>';
+			while ($dados = mysqli_fetch_array($query)) {
+				echo '<tr><td>';
+			    echo $dados['nome_participante'];
+				echo ' </td><td> ';
+				echo $dados['email_participante'];
+				echo ' </td><td> ';
+				echo $dados['tel_participante'];
+				echo ' </td><td> ';
+			}
+			echo '</table>';
+
+			mysqli_close($conecta);
+			/*
+			foreach ($this->presentes as $participante) {
+				echo "Nome: ".$participante->nome ." | E-mail: ".$participante->email ." | Telefone: ". $participante->telefone;
+			}
+			*/
+		}
+
+		function retornaParticante( $argIdParticipante ) {
+			// Recebe o Id do Participante e retorna o objeto participante com seus dados.
+			$conecta = new mysqli(HOST, USER, PASS, DB) or print(mysql_error());
+			$id_participante = $argIdParticipante;
+			$sql = "SELECT * FROM `Participantes` WHERE `id` LIKE '". $id_participante ."' ";
+			$query = $conecta -> query($sql);
+
+			/* Adicionando os dados aos atributos */
+			while ($dados = mysqli_fetch_array($query)) {
+				$this->id = $argIdParticipante;
+				$this->nome = $dados['nome_participante'];
+				$this->email = $dados['email_participante'];
+				$this->telefone = $dados['tel_participante'];
+				$this->idAtividade = $dados['cod_atividade'];
+			}
 
 			mysqli_close($conecta);
 		}

@@ -14,15 +14,15 @@
 
     //  Se o formulario de participantes estiver sendo preenchido, registre no banco de dados.
 
+    // Cria o objeto participante
+    $participante = new Participante();
+
     if ($n != 0) {
         // Obtem dados do formulario
         $atividade = $_POST['atividade'];
         $nome = $_POST['participante'];
         $email = $_POST['email'];
         $tel = $_POST['tel'];
-
-        // Cria o objeto participante
-        $participante = new Participante();
 
         $participante->idAtividade = $atividade;
         $participante->nome = $nome;
@@ -57,9 +57,9 @@
         </div>
         <div class="formulario-container">
             <?php $n = $n + 1; ?>
-            <form name="formulario-de-aluno" method="post"
-                action="inserirParticipantes.php?atividade=<?php echo $id_atividade; ?>&n=<?php echo $n; ?>">
             <div class="box">
+                <form name="formulario-de-aluno" method="post"
+                    action="inserirParticipantes.php?atividade=<?php echo $id_atividade; ?>&n=<?php echo $n; ?>">
                 <p align=""><i>Preencha os dados dos participantes e clique em "Inserir Participante" ou "Finalizar".</i></p>
                 <input type="hidden" name="atividade"  <?php echo "value=".$id_atividade; ?> >
                 <input type="hidden" name="n"  <?php echo "value=".$n; ?> >
@@ -71,9 +71,17 @@
             </form>
             <form name="formulario-de-aluno" method="post"
                 action="index.html">
-                <input type="submit" value="Finalizar">
-            </div>
+                <p align="right"><input type="submit" value="Finalizar"></p>
             </form>
+            </div>
+            <div class="box">
+                <p align="right">
+                    <h3>Inscritos:</h3>
+                    <?php
+                        $participante->exibeParticipantes( $id_atividade );
+                     ?>
+                </p>
+            </div>
         </div>
     </body>
 </html>

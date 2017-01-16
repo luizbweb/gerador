@@ -129,11 +129,14 @@
 			return $this->presentes[ $argID ];
 		}
 
-		function exibeParticipantes() {
+		/*
+		function exibeParticipantes( $argIdAtividade ) {
+
 			foreach ($this->presentes as $participante) {
 				echo "Nome: ".$participante->nome ." | E-mail: ".$participante->email ." | Telefone: ". $participante->telefone;
 			}
 		}
+		*/
 
 		function retornaLocal() {
 			return $this->local;
