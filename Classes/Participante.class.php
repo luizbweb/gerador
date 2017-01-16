@@ -83,14 +83,15 @@
 			*/
 		}
 
-		function retornaParticante( $argIdParticipante ) {
+/*
+		function retornaParticipante( $argIdParticipante ) {
 			// Recebe o Id do Participante e retorna o objeto participante com seus dados.
 			$conecta = new mysqli(HOST, USER, PASS, DB) or print(mysql_error());
 			$id_participante = $argIdParticipante;
 			$sql = "SELECT * FROM `Participantes` WHERE `id` LIKE '". $id_participante ."' ";
 			$query = $conecta -> query($sql);
 
-			/* Adicionando os dados aos atributos */
+
 			while ($dados = mysqli_fetch_array($query)) {
 				$this->id = $argIdParticipante;
 				$this->nome = $dados['nome_participante'];
@@ -101,7 +102,29 @@
 
 			mysqli_close($conecta);
 		}
+*/
+        function retornaParticipante( $argEmail, $argCodAtividade ) {
+            $conecta = new mysqli(HOST, USER, PASS, DB) or print(mysql_error());
+			$email_participante = $argEmail;
+            $cod_atividade = $argCodAtividade;
+			$sql = "SELECT * FROM `Participantes` WHERE `email_participante` LIKE '". $email_participante ."'
+                AND `cod_atividade` LIKE '". $cod_atividade ."' LIMIT 1 " ;
+			$query = $conecta -> query($sql);
 
+			/* Adicionando os dados aos atributos */
+			while ($dados = mysqli_fetch_array($query)) {
+				$this->id = $dados['id'];
+				$this->nome = $dados['nome_participante'];
+				$this->email = $dados['email_participante'];
+				$this->telefone = $dados['tel_participante'];
+				$this->idAtividade = $dados['cod_atividade'];
+			}
+
+			mysqli_close($conecta);
+
+            
+
+        }
 
 	}
 
