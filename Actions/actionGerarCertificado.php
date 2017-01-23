@@ -12,6 +12,8 @@ include_once '../Classes/Participante.class.php';
 $nome_atividade = $_POST['atividade'];
 $email = $_POST['email'];
 
+
+// Script antigo:
 $atividade = new Atividade();
 $atividade->insereNomeAtividade( $nome_atividade );
 $atividade->insereLocal( $local );

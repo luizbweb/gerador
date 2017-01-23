@@ -91,7 +91,6 @@
 			$sql = "SELECT * FROM `Participantes` WHERE `id` LIKE '". $id_participante ."' ";
 			$query = $conecta -> query($sql);
 
-
 			while ($dados = mysqli_fetch_array($query)) {
 				$this->id = $argIdParticipante;
 				$this->nome = $dados['nome_participante'];
@@ -99,7 +98,6 @@
 				$this->telefone = $dados['tel_participante'];
 				$this->idAtividade = $dados['cod_atividade'];
 			}
-
 			mysqli_close($conecta);
 		}
 */
@@ -121,8 +119,6 @@
 			}
 
 			mysqli_close($conecta);
-
-
 
         }
 
