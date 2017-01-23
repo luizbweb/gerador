@@ -47,11 +47,11 @@ $participante->senha = $senha;
 $participante->email = $email;
 */
 
-// Associa o organizador como primeiro Participante
-$atividade->insereParticipante( $participante );
+// Registra o participante como presente. Isso é util?
+$atividade->registraPresentes( $participante );
 
 // Exibe os dados inseridos
-$testa[0] = $atividade->retornaAtividade();
+$testa[0] = $atividade->nomeAtividade;
 $testa[1] = $atividade->retornaLocal();
 $testa[2] = $atividade->retornaDataAtividade();
 $testa[3] = $atividade->retornaOrganizador();
@@ -64,7 +64,7 @@ foreach ($testa as $retornos) {
 }
 echo '<br>';
 
-$atividade->exibeParticipantes();
+echo $participante->nome;
 
 /*
 
@@ -77,7 +77,7 @@ $id_atividade = $atividade->retornaIdAtividade( $nome_atividade );
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <meta http-equiv="refresh" content="3;../inserirParticipantes.php?atividade=<?php echo $id_atividade; ?>&n=0 "
+        <!-- <meta http-equiv="refresh" content="3;../inserirParticipantes.php?atividade=<?php echo $id_atividade; ?>&n=0 " -->
         <title>Certificado</title>
     </head>
     <body>
