@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- 
+<!--
     Criar um formulario para envio de email e atividade com estilo da Semana de CG.
     Caso o email esteja cadastrado enviar o link para Download do Certificado.
     Caso não esteja, oferecer um email para contato.
@@ -32,19 +32,18 @@
             <h1>GERADOR DE CERTIFICADOS</h1>
         </div>
         <div class="formulario-container">
-            <form name="formulario-de-aluno" method="post" action="certificado-pdf.php">
+            <form name="formulario-de-aluno" method="post" action="Actions/actionGerarCertifcado.php">
             <div class="box">
                 <p align=""><i>Preencha os seus dados e clique em "Gerar Certificado".<br /> Confira as informações e salve o certificado em seu computador.</i></p>
                 <p>Email: <input type="email" name="email" value="" placeholder="nome@provedor.com"></p>
-                <!--
                 <p>Atividade:
                     <select name="atividade">
                         <option>Escolha a Atividade</option>
-                        <option>Atividade 2</option>
-                        <option>Atividade 3</option>
+                        <option>Titulo Teste 2</option>
+                        <option>Atividade Teste 2</option>
                     </select>
                 </p>
-                <p>Matrícula: <input type="text" name="matricula" value="" placeholder="000.000.0000"></p> -->
+                <!-- <p>Matrícula: <input type="text" name="matricula" value="" placeholder="000.000.0000"></p> -->
                 <input type="submit" value="Gerar Certificado">
             </div>
             </form>
