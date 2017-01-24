@@ -69,7 +69,7 @@
             echo '</tr><tr>';
             echo '<td colspan="3">';
             echo '<form name="formulario-de-aluno" method="post"
-                    action="index.html">
+                    action="index.php">
                     <p align="right"><input type="submit" value="Finalizar"></p>
                 </form>';
             echo '</td>';

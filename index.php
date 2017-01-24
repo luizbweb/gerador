@@ -1,3 +1,11 @@
+<?php
+
+include_once 'Classes/Atividade.class.php';
+$ativ = new Atividade();
+$lista = $ativ->listaAtividades();
+
+?>
+
 <!DOCTYPE html>
 <!--
     Criar um formulario para envio de email e atividade com estilo da Semana de CG.
@@ -38,9 +46,11 @@
                 <p>Email: <input type="email" name="email" value="" placeholder="nome@provedor.com"></p>
                 <p>Atividade:
                     <select name="atividade">
-                        <option>Escolha a Atividade</option>
-                        <option>Atividade Teste 11</option>
-                        <option>Atividade Teste 12</option>
+                        <?php
+                            foreach ($lista as $item) {
+                				echo '<option>'. $item .'</option>';
+                			}
+                        ?>
                     </select>
                 </p>
                 <!-- <p>Matrícula: <input type="text" name="matricula" value="" placeholder="000.000.0000"></p> -->

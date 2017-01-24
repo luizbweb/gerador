@@ -133,6 +133,30 @@
 				$this->urlAtividade = $dados['url_atividade'];
 				$this->descAtividade = $dados['descricao'];
 			}
+			mysqli_close($conecta);
+		}
+
+		function listaAtividades() {
+			// Busca atividades no banco de dados.
+			$conecta = new mysqli(HOST, USER, PASS, DB) or print(mysql_error());
+			$sql = "SELECT `atividade` FROM `Atividades` ";
+			$query = $conecta -> query($sql);
+
+			/* Adicionando os dados às variàveis */
+			$i = 0;
+			while ($dados = mysqli_fetch_array($query)) {
+				$lista[$i] = $dados['atividade'];
+				$i++;
+			}
+
+			return $lista;
+			/*
+			foreach ($lista as $item) {
+				echo $item;
+			}
+			*/
+			mysqli_close($conecta);
+
 		}
 
 		function retornaDataAtividade() {

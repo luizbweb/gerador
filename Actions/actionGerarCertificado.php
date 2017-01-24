@@ -28,7 +28,7 @@ $atividade->retornaAtividade( $nome_atividade );
 // Busca informações do Participante com base no email
 
 $participante = new Participante();
-$participante->retornaParticipante( $email, $participante->idAtividade );
+$participante->retornaParticipante( $email, $atividade->idAtividade );
 
 // Gerar o certificado
 
@@ -85,7 +85,7 @@ $html = "<div class='certificado'>
     <div class='texto'>
         Certificamos que <u>" . $aluno . "</u> participou da <u>" . $nome_atividade . "</u>, ministrada por <u>" . $organizador . "</u>, no dia ". $data_atividade ." na cidade de ". $local .". <br><br><br><br> ". $local .", ". $today ."
         <div style='font-size: 14px;font-family:arial, helvetica;'>
-        	<br><br><br><br><br><br> codigo: ". $hash ."
+        	<br><br><br><br><br><br><br><br><br><br><br><br> codigo: ". $hash ."
         </div>
     </div>
 </div>";
@@ -93,11 +93,11 @@ $html = "<div class='certificado'>
 // Se o email estiver cadastrado gera o PDF
 
 if ($aluno == 'aluno') {
-    echo '<h2 align=center><br><br>Seu email n�o esta cadastrado. <br>Entre em contato conosco atrav&eacute;s do endere&ccedil;o:<br> certificados@waw.net.br</h2>';
+    echo '<h2 align=center><br><br>Seu email n&aatilde;o esta cadastrado. <br>Entre em contato conosco atrav&eacute;s do endere&ccedil;o:<br> certificados@waw.net.br</h2>';
 } else {
 	$geraPDF = new mPDF('utf-8', 'A4-L', s, 'Aegyptus');
 	$geraPDF->SetDisplayMode('fullpage');
-	$css = file_get_contents("../style.css");
+	$css = file_get_contents('style.css');
 	$geraPDF->WriteHTML($css,1);
 	$geraPDF->WriteHTML($html);
     // $geraPDF->Output( 'files/'.$hash.'.pdf', f);

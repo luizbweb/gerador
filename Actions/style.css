@@ -1,0 +1,40 @@
+.certificado {
+    background-image: url('5678.png');
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+@page {
+    margin: 0px;
+}
+.texto {
+    text-align: left;
+    padding-top: 260px;
+    padding-left: 120px;
+    width: 800px;
+    font-size: 26pt;
+}
+.logo {
+    #background-image:url('logo-jornada-menor.jpg');
+    width: 150px;
+    height: 100px;
+    padding: 35px;
+    float: left;
+}
+.topo {
+    #padding-left: 250px;
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 10px;
+}
+.formulario-container {
+    position: relative;
+    left: 20px;
+    width: 90%;
+    padding: 0px;
+    text-align: right;
+}
+input, select {
+    width: 270px;
+    height: 26px;
+}
