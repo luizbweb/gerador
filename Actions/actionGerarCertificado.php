@@ -7,8 +7,14 @@
  * Pode ser melhorado criando uma unica query que busque o participante de acordo com a atividade.
  */
 
+ $aluno = 'aluno';
+
 include_once '../Classes/Atividade.class.php';
 include_once '../Classes/Participante.class.php';
+include_once '../Classes/Certificado.class.php';
+
+//Biblioteca geradora do PDF
+include('../criadorPDF/mpdf.php');
 
 // Recebe os dados
 $nome_atividade = $_POST['atividade'];
@@ -51,36 +57,55 @@ $participante->email = $email;
 $atividade->registraPresentes( $participante );
 
 // Exibe os dados inseridos
-$testa[0] = $atividade->nomeAtividade;
-$testa[1] = $atividade->retornaLocal();
-$testa[2] = $atividade->retornaDataAtividade();
-$testa[3] = $atividade->retornaOrganizador();
-$testa[4] = $atividade->retornaUrlAtividade();
-$testa[5] = $atividade->retornaDescAtividade();
+$nome_atividade = $atividade->nomeAtividade;
+$local = $atividade->retornaLocal();
+$data_atividade = $atividade->retornaDataAtividade();
+$organizador = $atividade->retornaOrganizador();
+$url = $atividade->retornaUrlAtividade();
+$desc = $atividade->retornaDescAtividade();
 
-foreach ($testa as $retornos) {
-    echo $retornos;
-    echo '<br>';
-}
-echo '<br>';
-
-echo $participante->nome;
+$aluno = $participante->nome;
 
 /*
-
-$atividade->registraAtividade();
-$id_atividade = $atividade->retornaIdAtividade( $nome_atividade );
+* O certificado deve conter:
+* Aluno
+* Organizador
+* Atividade
+* Data da Atividade
+* Data de Emissão
 */
 
+// Código antigo para gerar o Certificado:
+
+$today = date(" d/m/Y ");
+$now = date("d/m/Y H:i:s ");
+$hash = hash(sha256, $now.$email, false);
+
+$html = "<div class='certificado'>
+    <div class='texto'>
+        Certificamos que <u>" . $aluno . "</u> participou da <u>" . $nome_atividade . "</u>, ministrada por <u>" . $organizador . "</u>, no dia ". $data_atividade ." na cidade de ". $local .". <br><br><br><br> ". $local .", ". $today ."
+        <div style='font-size: 14px;font-family:arial, helvetica;'>
+        	<br><br><br><br><br><br> codigo: ". $hash ."
+        </div>
+    </div>
+</div>";
+
+// Se o email estiver cadastrado gera o PDF
+
+if ($aluno == 'aluno') {
+    echo '<h2 align=center><br><br>Seu email n�o esta cadastrado. <br>Entre em contato conosco atrav&eacute;s do endere&ccedil;o:<br> certificados@waw.net.br</h2>';
+} else {
+	$geraPDF = new mPDF('utf-8', 'A4-L', s, 'Aegyptus');
+	$geraPDF->SetDisplayMode('fullpage');
+	$css = file_get_contents("../style.css");
+	$geraPDF->WriteHTML($css,1);
+	$geraPDF->WriteHTML($html);
+    // $geraPDF->Output( 'files/'.$hash.'.pdf', f);
+    $geraPDF->Output();
+}
+
+
+// $certificado = new Certificado();
+// $certificado->geraCertificado();
 
 ?>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <!-- <meta http-equiv="refresh" content="3;../inserirParticipantes.php?atividade=<?php echo $id_atividade; ?>&n=0 " -->
-        <title>Certificado</title>
-    </head>
-    <body>
-
-    </body>
-</html>
