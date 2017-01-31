@@ -7,7 +7,7 @@
  * Pode ser melhorado criando uma unica query que busque o participante de acordo com a atividade.
  */
 
- $aluno = 'aluno';
+ $aluno = '';
 
 include_once '../Classes/Atividade.class.php';
 include_once '../Classes/Participante.class.php';
@@ -92,17 +92,20 @@ $html = "<div class='certificado'>
 
 // Se o email estiver cadastrado gera o PDF
 
-if ($aluno == 'aluno') {
-    echo '<h2 align=center><br><br>Seu email n&aatilde;o esta cadastrado. <br>Entre em contato conosco atrav&eacute;s do endere&ccedil;o:<br> certificados@waw.net.br</h2>';
-} else {
-	$geraPDF = new mPDF('utf-8', 'A4-L', s, 'Aegyptus');
-	$geraPDF->SetDisplayMode('fullpage');
-	$css = file_get_contents('style.css');
-	$geraPDF->WriteHTML($css,1);
-	$geraPDF->WriteHTML($html);
-    // $geraPDF->Output( 'files/'.$hash.'.pdf', f);
-    $geraPDF->Output();
-}
+if ($aluno == '') {
+    echo '<h2 align=center><br><br>Seu email n&atilde;o esta cadastrado. <br>Entre em contato conosco atrav&eacute;s do endere&ccedil;o:<br> certificados@waw.net.br</h2>';
+    } else {
+
+        $certificado = new Certificado( $atividade, $atividade->idAtividade );
+        $certificado->registraCertificado( $atividade, $participante, $hash );
+    	$geraPDF = new mPDF('utf-8', 'A4-L', s, 'Aegyptus');
+    	$geraPDF->SetDisplayMode('fullpage');
+    	$css = file_get_contents('style.css');
+    	$geraPDF->WriteHTML($css,1);
+    	$geraPDF->WriteHTML($html);
+        // $geraPDF->Output( 'files/'.$hash.'.pdf', f);
+        $geraPDF->Output();
+    }
 
 
 // $certificado = new Certificado();

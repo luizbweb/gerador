@@ -34,8 +34,8 @@ $participante->nome = $organizador;
 $participante->senha = $senha;
 $participante->email = $email;
 
-// Associa o organizador como primeiro Participante
-$atividade->insereParticipante( $participante );
+// Associa o organizador como primeiro Participante! resolva isso!
+// $atividade->registraParticipante( $participante );
 
 /*
 

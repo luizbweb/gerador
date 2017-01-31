@@ -19,7 +19,7 @@
 		function __construct( Atividade $atividade, $argId ) {
 			$this->atividade = $atividade;
 			$this->now = date('d/m/Y H:i:s');
-			$this->participante = $this->atividade->presentes[0];
+			// $this->participante = $this->atividade->presentes[0];
 		}
 		function geraCertificado() {
 			echo '<h1>Dados do Certificado:</h1>';
@@ -54,6 +54,24 @@
 			$geraPDF->WriteHTML($css,1);
 			$geraPDF->WriteHTML($html);
 		    $geraPDF->Output( 'files/'.$this->hash.'.pdf', f);
+		}
+
+		function registraCertificado( Atividade $argAtividade, Participante $argParticipante, $argHash ) {
+			// Registra as informações do certificado no banco de dados.
+			// Registrar o id_participante, cod_atividade e hash,
+			$conecta = new mysqli(HOST, USER, PASS, DB) or print(mysql_error());
+
+			$cod_atividade = $argAtividade->idAtividade;
+			$id_participante = $argParticipante->id;
+			$hash = $argHash;
+
+			$sql = "INSERT INTO Certificados ( id_participante, cod_atividade, hash )
+				values(?, ?, ?)";
+			$stmt = $conecta->prepare( $sql );
+			$stmt->bind_param('sss', $cod_atividade, $id_participante, $hash);
+			$stmt->execute();
+
+			mysqli_close($conecta);
 		}
 
 		function consultaCertificado( $argCodCertificado ) {
