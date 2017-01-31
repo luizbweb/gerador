@@ -125,7 +125,8 @@
 			while ($dados = mysqli_fetch_array($query)) {
 				$this->idAtividade = $dados['cod'];
 				$this->nomeAtividade = $dados['atividade'];
-				$this->dataAtividade = $dados['data_fim'];
+				$data_invertida = $dados['data_fim'];
+				$this->dataAtividade = implode('-', array_reverse(explode('-', $data_invertida)));
 				$this->organizadorAtividade = $dados['organizador'];
 				$this->emailOrganizador = $dados['email_organizador'];
 				$this->senhaOrganizador = $dados['senha_organizador'];

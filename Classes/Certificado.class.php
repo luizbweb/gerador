@@ -76,6 +76,7 @@
 
 		function consultaCertificado( $argHash ) {
 			// Consulta hash no Banco de Dados e exibe os seus dados
+			// Dados: Nome do participante, Nome da atividade, Data de conclusão
 			$conecta = new mysqli(HOST, USER, PASS, DB) or print(mysql_error());
 			$hash = $argHash;
 			$sql = "SELECT * FROM `Atividades` INNER JOIN `Certificados` INNER JOIN `Participantes`
@@ -86,9 +87,20 @@
 
 			while ($dados = mysqli_fetch_array($query)) {
 			    $id_participante = $dados['id_participante'];
+				$nome_participante = $dados['nome_participante'];
+				$atividade = $dados['atividade'];
+				$data = $dados['data_fim'];
 			}
 
-			echo $id_participante;
+			$data = implode('-', array_reverse(explode('-', $data)));
+			// echo $id_participante;
+			echo '<br>';
+			echo 'Nome: '.$nome_participante ;
+			echo '<br>';
+			echo 'Atividade: '.$atividade ;
+			echo '<br>';
+			echo 'Data de Conclus&atilde;o: '.$data ;
+			echo '<br>';
 
 			mysqli_close($conecta);
 		}
