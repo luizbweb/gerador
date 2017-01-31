@@ -6,7 +6,7 @@
 
 	include_once 'Participante.class.php';
 	include_once 'Atividade.class.php';
-	include 'criadorPDF/mpdf.php';
+	// include 'criadorPDF/mpdf.php';
 
 	class Certificado {
 
@@ -74,8 +74,23 @@
 			mysqli_close($conecta);
 		}
 
-		function consultaCertificado( $argCodCertificado ) {
-			// Consulta no Banco de Dados se o Certificado é real
+		function consultaCertificado( $argHash ) {
+			// Consulta hash no Banco de Dados e exibe os seus dados
+			$conecta = new mysqli(HOST, USER, PASS, DB) or print(mysql_error());
+			$hash = $argHash;
+			$sql = "SELECT * FROM `Atividades` INNER JOIN `Certificados` INNER JOIN `Participantes`
+				WHERE `hash` LIKE '". $hash ."' LIMIT 1";
+			$query = $conecta -> query($sql);
+
+			/* Adicionando os dados às variàveis */
+
+			while ($dados = mysqli_fetch_array($query)) {
+			    $id_participante = $dados['id_participante'];
+			}
+
+			echo $id_participante;
+
+			mysqli_close($conecta);
 		}
 	}
 ?>
