@@ -95,11 +95,11 @@
 			$data = implode('-', array_reverse(explode('-', $data)));
 			// echo $id_participante;
 			echo '<br>';
-			echo 'Nome: '.$nome_participante ;
+			echo '<b>Nome: </b>'.$nome_participante ;
 			echo '<br>';
-			echo 'Atividade: '.$atividade ;
+			echo '<b>Atividade: </b>'.$atividade ;
 			echo '<br>';
-			echo 'Data de Conclus&atilde;o: '.$data ;
+			echo '<b>Data de Conclus&atilde;o: </b>'.$data ;
 			echo '<br>';
 
 			mysqli_close($conecta);
